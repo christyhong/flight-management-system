@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import { useState } from "react";
 
 function UpdateStatusForm({ onUpdate, isLoading }) {
-  const [flightId, setFlightId] = useState('SWA123');
-  const [newStatus, setNewStatus] = useState('DELAYED');
+  const [flightId, setFlightId] = useState("");
+  const [newStatus, setNewStatus] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -14,12 +14,20 @@ function UpdateStatusForm({ onUpdate, isLoading }) {
       <h2>Update Flight Status</h2>
       <div className="form-group">
         <label htmlFor="flightId">Flight ID</label>
-        <input
-          type="text"
+        <select
           id="flightId"
           value={flightId}
           onChange={(e) => setFlightId(e.target.value)}
-        />
+        >
+          <option value="" disabled selected>
+            Select flight
+          </option>
+          <option value="UA456">UA456</option>
+          <option value="DL789">DL789</option>
+          <option value="AA123">AA123</option>
+          <option value="SWA123">SWA123</option>
+          <option value="ML472">ML472</option>
+        </select>
       </div>
       <div className="form-group">
         <label htmlFor="newStatus">New Status</label>
@@ -28,6 +36,9 @@ function UpdateStatusForm({ onUpdate, isLoading }) {
           value={newStatus}
           onChange={(e) => setNewStatus(e.target.value)}
         >
+          <option value="" disabled selected>
+            Select status
+          </option>
           <option value="ON TIME">ON TIME</option>
           <option value="DELAYED">DELAYED</option>
           <option value="GROUNDED">GROUNDED</option>
@@ -36,7 +47,7 @@ function UpdateStatusForm({ onUpdate, isLoading }) {
         </select>
       </div>
       <button type="submit" className="submit-btn" disabled={isLoading}>
-        {isLoading ? 'Updating...' : 'Update Flight Status'}
+        {isLoading ? "Updating..." : "Update Flight Status"}
       </button>
     </form>
   );
