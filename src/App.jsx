@@ -15,7 +15,6 @@ function App() {
   const handleUpdateSubmit = async (flightId, newStatus) => {
     setIsLoading(true);
     setApiResponse(null);
-    setArchiveList([]);
     setError(null);
 
     const apiUrl = `${import.meta.env.VITE_API_BASE_URL}/update-status`;
@@ -39,7 +38,6 @@ function App() {
   const handleGetStatusSubmit = async (flightId) => {
     setIsLoading(true);
     setApiResponse(null);
-    setArchiveList([]);
     setError(null);
 
     const fullUrl = `${import.meta.env.VITE_API_BASE_URL}/status/${flightId}`;
